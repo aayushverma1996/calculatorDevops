@@ -7,7 +7,7 @@ public class Calculator_Service {
 
     public double getResult(String exp)
     {
-        double ans=0;
+        double ans=10;
 
 
 
