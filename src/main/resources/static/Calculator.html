@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Calculator Application">
+    <meta name="author" content="Kavish Agnihotri">
+    <title>Calculator Web Application</title>
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <meta name="theme-color" content="#563d7c">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+        @media (min-width:  700px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+    </style>
+
+    <!-- Custom styles -->
+    <link href="css/Calculator.css" rel="stylesheet">
+
+    <!-- Custom script -->
+    <script src="js/Calculator.js" ></script>
+
+      <script src="jquery.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      <script>
+          $(document).ready(function(){
+
+
+
+              $('#eval').click(function () {
+                  var exp=$("#expression").val();
+                 alert(exp);
+                  $.ajax({
+                      url: "getResult",
+                      type:"POST",
+                      data: {expression: exp},
+                      success: function (data) {
+                          $("#expression").val(data);
+                      },
+                  });
+
+              });
+
+          });
+
+
+      </script>
+  </head>
+
+  <body>
+    <div class="container">
+     <!-- <form class="form"> -->
+        <h1 class="h3 mb-3 font-weight-normal">Calculator</h1>
+        <label for="inputEmail" class="sr-only">0</label>
+        <input type="text" id="expression" class="form-control" placeholder="0" >
+         
+        <div class="row">
+        <button class="btn" value="("  onclick="calc(this.value)">(</button>
+        <button class="btn" value=")" onclick="calc(this.value)">)</button>
+        <button class="btn" value="%" onclick="calc(this.value)">%</button>
+        <button class="btn" value="AC" onclick="calc(this.value)">AC</button>
+        </div>
+        <div class="row">
+        <button class="btn-default" value="7" onclick="calc(this.value)">7</button>
+        <button class="btn-default" value="8" onclick="calc(this.value)">8</button>
+        <button class="btn-default" value="9" onclick="calc(this.value)">9</button>
+        <button class="btn" value="/" onclick="calc(this.value)">/</button>
+        </div>
+        <div class="row">
+        <button class="btn-default" value="4" onclick="calc(this.value)">4</button>
+        <button class="btn-default" value="5" onclick="calc(this.value)">5</button>
+        <button class="btn-default" value="6" onclick="calc(this.value)">6</button>
+         <button class="btn" value="*" onclick="calc(this.value)">*</button>
+        </div>
+        <div class="row">
+        <button class="btn-default" value="1" onclick="calc(this.value)">1</button>
+        <button class="btn-default" value="2" onclick="calc(this.value)">2</button>
+        <button class="btn-default" value="3" onclick="calc(this.value)">3</button>
+         <button class="btn" value="-" onclick="calc(this.value)">-</button>
+        </div>
+        <div class="row">
+        <button class="btn-default"  value="0" onclick="calc(this.value)">0</button>
+        <button class="btn-default"  value="." onclick="calc(this.value)">.</button>
+        <button class="btn btn-info" id="eval" value="=" type="submit" >=</button>
+         <button class="btn" value="+" onclick="calc(this.value)">+</button>
+        </div>
+      <!-- </form> -->
+  </div>
+
+
+
+</html>
